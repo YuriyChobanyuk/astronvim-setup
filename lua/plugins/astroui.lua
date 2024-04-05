@@ -18,34 +18,40 @@ return {
       astrodark = {
         Comment = {
           fg = "#9999bb",
-          italic = true
+          italic = true,
         },
         LineNr = {
           fg = "#9999bb",
         },
         CursorLineNr = {
           bg = "#9999bb",
-          fg = "#003300"
+          fg = "#003300",
         },
         Visual = {
           bg = "#3e80b5",
-          fg = "#cecece"
+          fg = "#cecece",
         },
         CursorLine = {
-          bg = "#353540"
+          bg = "#353540",
         },
         CurSearch = {
           bg = "#f28859",
-          fg = "#030303"
+          fg = "#030303",
         },
         IncSearch = {
           bg = "#f28859",
-          fg = "#030303"
+          fg = "#030303",
         },
         Search = {
           bg = "#cce197",
-          fg = "#020202"
-        }
+          fg = "#020202",
+        },
+        ["@field"] = {
+          fg = "#abb2bf",
+        },
+        ["@property"] = {
+          fg = "#abb2bf",
+        },
       },
     },
     -- Icons can be configured throughout the interface

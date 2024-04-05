@@ -7,7 +7,6 @@ return {
     -- config variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
     local formatting = null_ls.builtins.formatting
-    local diagnostics = null_ls.builtins.diagnostics
     local code_actions = null_ls.builtins.code_actions
 
     -- Check supported formatters and linters
