@@ -28,7 +28,7 @@ git clone https://github.com/YuriyChobanyuk/astronvim-setup ~/.config/nvim
 ```
 
 ```windows
-git clone https://github.com/YuriyChobanyuk/astronvim-setup ~/AppData/local/nvim
+git clone https://github.com/YuriyChobanyuk/astronvim-setup $env:LOCALAPPDATA\nvim
 ```
 
 #### Start Neovim
