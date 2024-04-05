@@ -33,6 +33,18 @@ return {
         },
         CursorLine = {
           bg = "#353540"
+        },
+        CurSearch = {
+          bg = "#f28859",
+          fg = "#030303"
+        },
+        IncSearch = {
+          bg = "#f28859",
+          fg = "#030303"
+        },
+        Search = {
+          bg = "#cce197",
+          fg = "#020202"
         }
       },
     },

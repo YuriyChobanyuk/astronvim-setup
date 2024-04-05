@@ -95,6 +95,8 @@ local packageMappings = {
   ["<Leader>Pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates" },
   ["<Leader>PU"] = { function() require("lazy").update() end, desc = "Plugins Update" },
   ["<Leader>Pa"] = { function() require("astrocore").update_packages() end, desc = "Update Lazy and Mason" },
+  ["<Leader>Pm"] = { function() require("mason.ui").open() end, desc = "Mason Installer" },
+  ["<Leader>PM"] = { function() require("astrocore.mason").update_all() end, desc = "Mason Update" },
 }
 
 local bufferMappings = {

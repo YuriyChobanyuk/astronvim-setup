@@ -29,6 +29,7 @@ return {
         "prettierd",
         "stylua",
         "eslint_d",
+        "jq"
         -- add more arguments for adding more null-ls sources
       })
     end,
