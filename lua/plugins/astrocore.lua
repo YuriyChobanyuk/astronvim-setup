@@ -9,7 +9,8 @@
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
 
----@type AstroCoreConfig
+---@type LazySpec
+--
 return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
