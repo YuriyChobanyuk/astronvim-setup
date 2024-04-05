@@ -13,8 +13,7 @@ end
 local get_icon = require("astroui").get_icon
 
 local hopMappings = {
-  ["<Leader>s"] = { function() require("hop").hint_char1 {} end },
-  ["<Leader>/"] = { function() require("hop").hint_char2 {} end },
+  ["<Leader>s"] = { function() require("hop").hint_patterns {} end },
 }
 
 local commonMappings = {
@@ -52,6 +51,8 @@ local neotreeMappings = {
     end,
     desc = "Toggle Explorer Focus",
   },
+  ["<Leader>k]"] = { "<cmd>vertical resize -20<CR>", desc = "increase tree width" },
+  ["<Leader>k["] = { "<cmd>vertical resize +20<CR>", desc = "decrease tree width" },
 }
 
 local gitsignsMappings = {
@@ -73,7 +74,7 @@ local tabMappings = {
   },
 }
 
-local languageMappings = {
+local navigationMappings = {
   ["[e"] = { function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
   ["]e"] = { function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
   ["]t"] = {
@@ -96,6 +97,11 @@ local packageMappings = {
   ["<Leader>Pa"] = { function() require("astrocore").update_packages() end, desc = "Update Lazy and Mason" },
 }
 
+local bufferMappings = {
+  ["<Leader>xw"] = { function() require("astrocore.buffer").close() end, desc = "Close all buffers except current" },
+  ["<Leader>xt"] = { "<cmd>e#<CR>", desc = "Reopen closed buffer" },
+}
+
 local mappings = {
   -- first key is the mode
   n = {},
@@ -111,8 +117,9 @@ assign(mappings.n, telescopeMappings)
 assign(mappings.n, gitsignsMappings)
 assign(mappings.n, neotreeMappings)
 assign(mappings.n, tabMappings)
-assign(mappings.n, languageMappings)
+assign(mappings.n, navigationMappings)
 assign(mappings.n, packageMappings)
+assign(mappings.n, bufferMappings)
 
 assign(mappings.v, commonMappings)
 assign(mappings.v, hopMappings)

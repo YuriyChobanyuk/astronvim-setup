@@ -30,7 +30,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         "tsserver",
-        "lua_ls"
+        "lua_ls",
       },
       timeout_ms = 5000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -81,30 +81,7 @@ return {
       },
     },
     -- mappings to be set up on attaching of a language server
-    mappings = {
-      -- map mode (:h map-modes)
-      n = {
-        -- a binding with no condition and therefore is always added
-        gl = {
-          function() vim.diagnostic.open_float() end,
-          desc = "Hover diagnostics updated",
-        },
-        -- condition for only server with declaration capabilities
-        gD = {
-          function() vim.lsp.buf.declaration() end,
-          desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
-        },
-        -- condition with a full function with `client` and `bufnr`
-        ["<leader>uY"] = {
-          function() require("astrolsp.toggles").buffer_semantic_tokens() end,
-          desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client, bufnr)
-            return client.server_capabilities.semanticTokensProvider and vim.lsp.semantic_tokens
-          end,
-        },
-      },
-    },
+    mappings = {},
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
     on_attach = function(client, bufnr)
