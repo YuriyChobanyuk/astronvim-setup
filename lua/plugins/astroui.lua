@@ -17,7 +17,22 @@ return {
       },
       astrodark = {
         Comment = {
-          fg = "#9999bb"
+          fg = "#9999bb",
+          italic = true
+        },
+        LineNr = {
+          fg = "#9999bb",
+        },
+        CursorLineNr = {
+          bg = "#9999bb",
+          fg = "#003300"
+        },
+        Visual = {
+          bg = "#3e80b5",
+          fg = "#cecece"
+        },
+        CursorLine = {
+          bg = "#353540"
         }
       },
     },
