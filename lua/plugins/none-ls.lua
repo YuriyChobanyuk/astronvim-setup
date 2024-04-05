@@ -18,10 +18,10 @@ return {
       formatting.prettierd.with {
         prefer_local = "node_modules/.bin",
       },
-      diagnostics.eslint_d,
-      diagnostics.jsonlint,
-      code_actions.eslint_d,
+      require "none-ls.formatting.jq",
       code_actions.ts_node_action,
+      require "none-ls.formatting.eslint_d",
+      require "none-ls.code_actions.eslint_d",
     }
 
     config.debounce = 500
@@ -31,4 +31,7 @@ return {
 
     return config -- return final config table
   end,
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+  },
 }

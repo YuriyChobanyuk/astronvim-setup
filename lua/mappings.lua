@@ -10,24 +10,11 @@ local function assign(tbl, props)
   end
 end
 
+local get_icon = require("astroui").get_icon
+
 local hopMappings = {
-  ["<Leader>s"] = { function() require("hop").hint_char {} end },
-  ["<Leader>S"] = { function() require("hop").hint_char2 {} end },
-}
-
-local astroMappings = {
-  ["<Leader>a"] = { desc = "Astro Update" },
-  ["<Leader>ai"] = { function() require("lazy").install() end, desc = "Plugins Install" },
-  ["<Leader>as"] = { function() require("lazy").home() end, desc = "Plugins Status" },
-  ["<Leader>aS"] = { function() require("lazy").sync() end, desc = "Plugins Sync" },
-  ["<Leader>au"] = { function() require("lazy").check() end, desc = "Plugins Check Updates" },
-  ["<Leader>aU"] = { function() require("lazy").update() end, desc = "Plugins Update" },
-
-  -- AstroNvim
-  ["<Leader>aa"] = { "<cmd>AstroUpdatePackages<cr>", desc = "Update Plugins and Mason Packages" },
-  ["<Leader>aA"] = { "<cmd>AstroUpdate<cr>", desc = "AstroNvim Update" },
-  ["<Leader>av"] = { "<cmd>AstroVersion<cr>", desc = "AstroNvim Version" },
-  ["<Leader>al"] = { "<cmd>AstroChangelog<cr>", desc = "AstroNvim Changelog" },
+  ["<Leader>s"] = { function() require("hop").hint_char1 {} end },
+  ["<Leader>/"] = { function() require("hop").hint_char2 {} end },
 }
 
 local commonMappings = {
@@ -86,15 +73,33 @@ local tabMappings = {
   },
 }
 
+local languageMappings = {
+  ["[e"] = { function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
+  ["]e"] = { function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
+  ["]t"] = {
+    function() require("astrocore.buffer").nav(vim.v.count1) end,
+    desc = "Next buffer",
+  },
+  ["[t"] = {
+    function() require("astrocore.buffer").nav(-vim.v.count1) end,
+    desc = "Previous buffer",
+  },
+}
+
+local packageMappings = {
+  P = { desc = get_icon("Package", 1, true) .. "Packages" },
+  ["<Leader>Pi"] = { function() require("lazy").install() end, desc = "Plugins Install" },
+  ["<Leader>Ps"] = { function() require("lazy").home() end, desc = "Plugins Status" },
+  ["<Leader>PS"] = { function() require("lazy").sync() end, desc = "Plugins Sync" },
+  ["<Leader>Pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates" },
+  ["<Leader>PU"] = { function() require("lazy").update() end, desc = "Plugins Update" },
+  ["<Leader>Pa"] = { function() require("astrocore").update_packages() end, desc = "Update Lazy and Mason" },
+}
+
 local mappings = {
   -- first key is the mode
-  n = {
-    ["<Leader>h"] = false,
-    ["<Leader>/"] = false,
-  },
-  v = {
-    ["<Leader>h"] = false,
-  },
+  n = {},
+  v = {},
   t = {
     ["<C-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
   },
@@ -106,7 +111,8 @@ assign(mappings.n, telescopeMappings)
 assign(mappings.n, gitsignsMappings)
 assign(mappings.n, neotreeMappings)
 assign(mappings.n, tabMappings)
-assign(mappings.n, astroMappings)
+assign(mappings.n, languageMappings)
+assign(mappings.n, packageMappings)
 
 assign(mappings.v, commonMappings)
 assign(mappings.v, hopMappings)
