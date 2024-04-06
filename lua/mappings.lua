@@ -72,6 +72,8 @@ local tabMappings = {
     end,
     desc = "New terminal",
   },
+  ["<Leader>t]"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
+  ["<Leader>t["] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
 }
 
 local navigationMappings = {
