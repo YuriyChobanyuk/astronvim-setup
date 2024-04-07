@@ -5,5 +5,5 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
-  -- import/override with your plugins folder
+  { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
 }
