@@ -36,7 +36,8 @@ local telescopeMappings = {
     end,
     desc = "Find words in all files",
   },
-  ["<Leader>fv"] = { function() require("telescope.builtin").treesitter() end, desc = "Search variables" },
+  ["<Leader>fv"] = { function() require("telescope.builtin").treesitter() end, desc = "Find variables" },
+  ["<Leader>/"] = { "<cmd>noh<CR>", desc = "Noh" },
 }
 
 local neotreeMappings = {
