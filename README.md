@@ -36,3 +36,6 @@ git clone https://github.com/YuriyChobanyuk/astronvim-setup $env:LOCALAPPDATA\nv
 ```shell
 nvim
 ```
+
+NOTES
+- to ignore files in telescope search you have to create an .rgignore

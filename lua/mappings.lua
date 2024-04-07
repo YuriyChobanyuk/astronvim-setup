@@ -106,12 +106,22 @@ local bufferMappings = {
   ["<Leader>xt"] = { "<cmd>e#<CR>", desc = "Reopen closed buffer" },
 }
 
+local testingMappings = {
+  ["<Leader>aa"] = { function() require("neotest").run.run() end, desc = "Run current test suite" },
+  ["<Leader>af"] = { function() require("neotest").run.run(vim.fn.expand "%") end, desc = "Run current test file" },
+  ["<Leader>ad"] = { function() require("neotest").run.run { strategy = "dap" } end, desc = "Debug current test suite" },
+  ["<Leader>as"] = { function() require("neotest").run.stop() end, desc = "Stop test" },
+  ["<Leader>aA"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
+  ["<Leader>ar"] = { function() require("neotest").summary.open() end, desc = "Test results" },
+  ["<Leader>aR"] = { function() require("neotest").summary.close() end, desc = "Close test results" },
+}
+
 local mappings = {
   -- first key is the mode
   n = {},
   v = {},
   t = {
-    ["<C-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+    ["<Esc>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
   },
 }
 
@@ -124,6 +134,7 @@ assign(mappings.n, tabMappings)
 assign(mappings.n, navigationMappings)
 assign(mappings.n, packageMappings)
 assign(mappings.n, bufferMappings)
+assign(mappings.n, testingMappings)
 
 assign(mappings.v, commonMappings)
 assign(mappings.v, hopMappings)

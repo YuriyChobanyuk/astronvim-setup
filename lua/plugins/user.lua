@@ -37,6 +37,7 @@ return {
     end,
   },
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  -- TODO: check snippets
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
@@ -91,5 +92,60 @@ return {
   {
     "ckolkey/ts-node-action",
     config = function() require("ts-node-action").setup {} end,
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-jest",
+      "marilari88/neotest-vitest",
+    },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-jest" {
+            jestCommand = "npm test --",
+            jestConfigFile = "jest.config.ts",
+            env = { CI = true },
+            cwd = function(path) return vim.fn.getcwd() end,
+            jest_test_discovery = true,
+          },
+          require "neotest-vitest",
+        },
+      }
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      { "theHamsta/nvim-dap-virtual-text", config = true },
+    },
+    config = function()
+      local dap = require "dap"
+      require("dap").adapters["pwa-node"] = {
+        type = "server",
+        host = "localhost",
+        port = "${port}",
+        executable = {
+          command = "js-debug-adapter", -- As I'm using mason, this will be in the path
+          args = { "${port}" },
+        },
+      }
+
+      for _, language in ipairs { "typescript", "javascript" } do
+        require("dap").configurations[language] = {
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+          },
+        }
+      end
+    end,
   },
 }

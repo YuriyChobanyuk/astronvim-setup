@@ -29,7 +29,7 @@ return {
         },
         Visual = {
           bg = "#3e80b5",
-          fg = "#cecece",
+          fg = "#f3f3f3",
         },
         CursorLine = {
           bg = "#353540",

@@ -29,7 +29,6 @@ return {
         "prettierd",
         "stylua",
         "eslint_d",
-        "jq"
         -- add more arguments for adding more null-ls sources
       })
     end,
@@ -41,6 +40,7 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "python",
+        "javascript"
         -- add more arguments for adding more debuggers
       })
     end,
