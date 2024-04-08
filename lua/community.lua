@@ -7,5 +7,4 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
   { import = "astrocommunity.search.nvim-hlslens" },
-  { import = "astrocommunity.register.nvim-neoclip-lua" },
 }
