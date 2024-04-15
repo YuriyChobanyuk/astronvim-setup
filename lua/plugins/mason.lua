@@ -15,6 +15,7 @@ return {
         "sqlls",
         "omnisharp",
         "tsserver",
+        "lemminx"
         -- add more arguments for adding more language servers
       })
     end,

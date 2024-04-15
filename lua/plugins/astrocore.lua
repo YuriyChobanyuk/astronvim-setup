@@ -37,7 +37,9 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
-        scrolloff = 5
+        scrolloff = 5,
+        guifont = "Pragmasevka Nerd Font:h13",
+        fileformats = "dos,unix,mac"
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

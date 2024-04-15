@@ -19,7 +19,7 @@ return {
       },
       require "none-ls.formatting.jq",
       code_actions.ts_node_action,
-      require "none-ls.formatting.eslint_d",
+      require "none-ls.diagnostics.eslint_d",
       require "none-ls.code_actions.eslint_d",
     }
 
