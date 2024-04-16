@@ -122,7 +122,7 @@ local mappings = {
   n = {},
   v = {},
   t = {
-    ["<Esc>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+    ["<C-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
   },
 }
 

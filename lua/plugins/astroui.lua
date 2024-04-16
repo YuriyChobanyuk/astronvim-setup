@@ -52,6 +52,12 @@ return {
         ["@property"] = {
           fg = "#abb2bf",
         },
+        ["@interface"] = {
+          fg = "#56b6c2"
+        },
+        Constant = {
+          fg = "#abb2bf"
+        }
       },
     },
     -- Icons can be configured throughout the interface
