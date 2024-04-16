@@ -37,6 +37,7 @@ local telescopeMappings = {
     desc = "Find words in all files",
   },
   ["<Leader>fv"] = { function() require("telescope.builtin").treesitter() end, desc = "Find variables" },
+  ["<Leader>fH"] = { function() require("telescope.builtin").highlights() end, desc = "Find highlights" },
   ["<Leader>/"] = { "<cmd>noh<CR>", desc = "Noh" },
 }
 
