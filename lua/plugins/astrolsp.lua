@@ -31,7 +31,7 @@ return {
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         "tsserver",
         "lua_ls",
-        "html"
+        "html",
       },
       timeout_ms = 5000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -82,7 +82,21 @@ return {
       },
     },
     -- mappings to be set up on attaching of a language server
-    mappings = {},
+    mappings = {
+      n = {
+        ["<Leader>li"] = {
+          function()
+            local params = {
+              command = "_typescript.organizeImports",
+              arguments = { vim.api.nvim_buf_get_name(0) },
+              title = "",
+            }
+            vim.lsp.buf.execute_command(params)
+          end,
+          desc = "Optimize imports TS",
+        },
+      },
+    },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
     on_attach = function(client, bufnr)

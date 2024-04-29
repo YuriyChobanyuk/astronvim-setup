@@ -13,7 +13,7 @@ end
 local get_icon = require("astroui").get_icon
 
 local hopMappings = {
-  ["<Leader>s"] = { function() require("hop").hint_patterns {} end },
+  ["<Leader>s"] = { function() require("hop").hint_patterns {} end, desc = "Hop" },
 }
 
 local commonMappings = {
@@ -27,7 +27,6 @@ local commonMappings = {
 }
 
 local telescopeMappings = {
-
   ["<Leader>fW"] = {
     function()
       require("telescope.builtin").live_grep {
@@ -53,8 +52,10 @@ local neotreeMappings = {
     end,
     desc = "Toggle Explorer Focus",
   },
-  ["<Leader>k]"] = { "<cmd>vertical resize -20<CR>", desc = "increase tree width" },
-  ["<Leader>k["] = { "<cmd>vertical resize +20<CR>", desc = "decrease tree width" },
+  ["<Leader>k]"] = { "<cmd>vertical resize +20<CR>", desc = "increase pane width" },
+  ["<Leader>k["] = { "<cmd>vertical resize -20<CR>", desc = "decrease pane width" },
+  ["<Leader>k{"] = { "<cmd>horizontal resize -20<CR>", desc = "increase tree height" },
+  ["<Leader>k}"] = { "<cmd>horizontal resize +20<CR>", desc = "decrease tree height" },
 }
 
 local gitsignsMappings = {
@@ -92,7 +93,7 @@ local navigationMappings = {
 }
 
 local packageMappings = {
-  P = { desc = get_icon("Package", 1, true) .. "Packages" },
+  ["<Leader>P"] = { desc = get_icon("Package", 1, true) .. "Packages" },
   ["<Leader>Pi"] = { function() require("lazy").install() end, desc = "Plugins Install" },
   ["<Leader>Ps"] = { function() require("lazy").home() end, desc = "Plugins Status" },
   ["<Leader>PS"] = { function() require("lazy").sync() end, desc = "Plugins Sync" },
@@ -104,18 +105,30 @@ local packageMappings = {
 }
 
 local bufferMappings = {
+  ["<Leader>x"] = { desc = "Buffer mappings" },
   ["<Leader>xw"] = { function() require("astrocore.buffer").close() end, desc = "Close all buffers except current" },
   ["<Leader>xt"] = { "<cmd>e#<CR>", desc = "Reopen closed buffer" },
 }
 
 local testingMappings = {
-  ["<Leader>aa"] = { function() require("neotest").run.run() end, desc = "Run current test suite" },
-  ["<Leader>af"] = { function() require("neotest").run.run(vim.fn.expand "%") end, desc = "Run current test file" },
-  ["<Leader>ad"] = { function() require("neotest").run.run { strategy = "dap" } end, desc = "Debug current test suite" },
-  ["<Leader>as"] = { function() require("neotest").run.stop() end, desc = "Stop test" },
-  ["<Leader>aA"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
-  ["<Leader>ar"] = { function() require("neotest").summary.open() end, desc = "Test results" },
-  ["<Leader>aR"] = { function() require("neotest").summary.close() end, desc = "Close test results" },
+  ["<Leader>m"] = { desc = "Testing" },
+  ["<Leader>ma"] = { function() require("neotest").run.run() end, desc = "Run current test suite" },
+  ["<Leader>mf"] = { function() require("neotest").run.run(vim.fn.expand "%") end, desc = "Run current test file" },
+  ["<Leader>md"] = { function() require("neotest").run.run { strategy = "dap" } end, desc = "Debug current test suite" },
+  ["<Leader>ms"] = { function() require("neotest").run.stop() end, desc = "Stop test" },
+  ["<Leader>mA"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
+  ["<Leader>mr"] = { function() require("neotest").summary.open() end, desc = "Test results" },
+  ["<Leader>mR"] = { function() require("neotest").summary.close() end, desc = "Close test results" },
+}
+
+local toolsMappings = {
+  ["<Leader>a"] = { desc = "Tools mappings" },
+  ["<Leader>ad"] = { "<cmd>Trouble diagnostics focus filter.buf=0<cr>", desc = "Trouble Buffer" },
+  ["<Leader>aD"] = { "<cmd>Trouble diagnostics focus<cr>", desc = "Trouble Global" },
+  ["<Leader>al"] = { "<cmd>Trouble lsp focus<cr>", desc = "Trouble lsp" },
+  ["<Leader>ac"] = { "<cmd>Trouble close<cr>", desc = "Trouble close" },
+  ["<Leader>aa"] = { "<cmd>AerialOpen<cr>", desc = "Aerial Open" },
+  ["<Leader>ax"] = { "<cmd>AerialClose<cr>", desc = "Aerial Close" },
 }
 
 local mappings = {
@@ -124,6 +137,9 @@ local mappings = {
   v = {},
   t = {
     ["<C-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+  },
+  i = {
+    ["<C-l>"] = { function() require("cmp").mapping.complete() end },
   },
 }
 
@@ -137,6 +153,7 @@ assign(mappings.n, navigationMappings)
 assign(mappings.n, packageMappings)
 assign(mappings.n, bufferMappings)
 assign(mappings.n, testingMappings)
+assign(mappings.n, toolsMappings)
 
 assign(mappings.v, commonMappings)
 assign(mappings.v, hopMappings)

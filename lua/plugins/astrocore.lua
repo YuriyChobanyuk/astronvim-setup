@@ -39,7 +39,7 @@ return {
         wrap = false, -- sets vim.opt.wrap
         scrolloff = 5,
         guifont = "Pragmasevka Nerd Font:h13",
-        fileformats = "dos,unix,mac"
+        fileformats = "dos,unix,mac",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

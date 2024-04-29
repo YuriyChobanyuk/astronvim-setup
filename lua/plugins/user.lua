@@ -47,6 +47,32 @@ return {
       luasnip.filetype_extend("javascript", { "javascriptreact" })
     end,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      -- opts parameter is the default options table
+      -- the function is lazy loaded so cmp is able to be required
+      local cmp = require "cmp"
+
+      opts.mapping["<C-l>"] = cmp.mapping.complete { reason = "manual" }
+    end,
+    config = function(plugin, opts)
+      require "astronvim.plugins.configs.cmp"(plugin, opts)
+
+      local cmp = require "cmp"
+
+      cmp.setup {
+        completion = {
+          completeopt = "menu,menuone,noinsert,noselect",
+          -- autocomplete = {
+          --   cmp.TriggerEvent.TextChanged,
+          --   cmp.TriggerEvent.InsertEnter,
+          -- },
+          keyword_length = 0,
+        },
+      }
+    end,
+  },
 
   {
     "windwp/nvim-autopairs",
@@ -111,7 +137,7 @@ return {
             jestConfigFile = "jest.config.ts",
             env = { CI = true },
             cwd = function(path) return vim.fn.getcwd() end,
-            jest_test_discovery = true,
+            jest_test_discovery = false,
           },
           require "neotest-vitest",
         },
@@ -119,33 +145,8 @@ return {
     end,
   },
   {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      { "theHamsta/nvim-dap-virtual-text", config = true },
-    },
-    config = function()
-      local dap = require "dap"
-      require("dap").adapters["pwa-node"] = {
-        type = "server",
-        host = "localhost",
-        port = "${port}",
-        executable = {
-          command = "js-debug-adapter", -- As I'm using mason, this will be in the path
-          args = { "${port}" },
-        },
-      }
-
-      for _, language in ipairs { "typescript", "javascript" } do
-        require("dap").configurations[language] = {
-          {
-            type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            cwd = "${workspaceFolder}",
-          },
-        }
-      end
-    end,
+    "folke/trouble.nvim",
+    branch = "dev", -- IMPORTANT!
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
   },
 }
