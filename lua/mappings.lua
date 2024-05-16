@@ -37,7 +37,6 @@ local telescopeMappings = {
   },
   ["<Leader>fv"] = { function() require("telescope.builtin").treesitter() end, desc = "Find variables" },
   ["<Leader>fH"] = { function() require("telescope.builtin").highlights() end, desc = "Find highlights" },
-  ["<Leader>/"] = { "<cmd>noh<CR>", desc = "Noh" },
 }
 
 local neotreeMappings = {
@@ -104,31 +103,12 @@ local packageMappings = {
   ["<Leader>PM"] = { function() require("astrocore.mason").update_all() end, desc = "Mason Update" },
 }
 
-local bufferMappings = {
-  ["<Leader>x"] = { desc = "Buffer mappings" },
+local panelMappings = {
+  ["<Leader>x"] = { desc = "Panels" },
   ["<Leader>xw"] = { function() require("astrocore.buffer").close() end, desc = "Close all buffers except current" },
   ["<Leader>xt"] = { "<cmd>e#<CR>", desc = "Reopen closed buffer" },
-}
-
-local testingMappings = {
-  ["<Leader>m"] = { desc = "Testing" },
-  ["<Leader>ma"] = { function() require("neotest").run.run() end, desc = "Run current test suite" },
-  ["<Leader>mf"] = { function() require("neotest").run.run(vim.fn.expand "%") end, desc = "Run current test file" },
-  ["<Leader>md"] = { function() require("neotest").run.run { strategy = "dap" } end, desc = "Debug current test suite" },
-  ["<Leader>ms"] = { function() require("neotest").run.stop() end, desc = "Stop test" },
-  ["<Leader>mA"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
-  ["<Leader>mr"] = { function() require("neotest").summary.open() end, desc = "Test results" },
-  ["<Leader>mR"] = { function() require("neotest").summary.close() end, desc = "Close test results" },
-}
-
-local toolsMappings = {
-  ["<Leader>a"] = { desc = "Tools mappings" },
-  ["<Leader>ad"] = { "<cmd>Trouble diagnostics focus filter.buf=0<cr>", desc = "Trouble Buffer" },
-  ["<Leader>aD"] = { "<cmd>Trouble diagnostics focus<cr>", desc = "Trouble Global" },
-  ["<Leader>al"] = { "<cmd>Trouble lsp focus<cr>", desc = "Trouble lsp" },
-  ["<Leader>ac"] = { "<cmd>Trouble close<cr>", desc = "Trouble close" },
-  ["<Leader>aa"] = { "<cmd>AerialOpen<cr>", desc = "Aerial Open" },
-  ["<Leader>ax"] = { "<cmd>AerialClose<cr>", desc = "Aerial Close" },
+  ["<Leader>xh"] = { "<cmd>noh<CR>", desc = "Noh" },
+  ["<Leader>xa"] = { "<cmd>AerialClose<cr>", desc = "Close Aerial" },
 }
 
 local mappings = {
@@ -151,9 +131,7 @@ assign(mappings.n, neotreeMappings)
 assign(mappings.n, tabMappings)
 assign(mappings.n, navigationMappings)
 assign(mappings.n, packageMappings)
-assign(mappings.n, bufferMappings)
-assign(mappings.n, testingMappings)
-assign(mappings.n, toolsMappings)
+assign(mappings.n, panelMappings)
 
 assign(mappings.v, commonMappings)
 assign(mappings.v, hopMappings)

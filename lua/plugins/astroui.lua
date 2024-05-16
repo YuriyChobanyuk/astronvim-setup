@@ -35,16 +35,16 @@ return {
           bg = "#353540",
         },
         CurSearch = {
-          bg = "#f28859",
-          fg = "#030303",
-        },
-        IncSearch = {
-          bg = "#f28859",
-          fg = "#030303",
-        },
-        Search = {
           bg = "#cce197",
           fg = "#020202",
+        },
+        IncSearch = {
+          bg = "#cce197",
+          fg = "#020202",
+        },
+        Search = {
+          fg = "#cce197",
+          underline = true
         },
         ["@field"] = {
           fg = "#abb2bf",
