@@ -24,8 +24,8 @@ return {
           fg = "#9999bb",
         },
         CursorLineNr = {
-          bg = "#9999bb",
-          fg = "#003300",
+          fg = "#cce197",
+          bold = true
         },
         Visual = {
           bg = "#3e80b5",
