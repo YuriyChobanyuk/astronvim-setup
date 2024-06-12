@@ -52,4 +52,12 @@ return {
     "ckolkey/ts-node-action",
     config = function() require("ts-node-action").setup {} end,
   },
+  {
+    "David-Kunz/jester",
+    config = function()
+      require("jester").setup {
+        cmd = "jest -t \"$result\""
+      }
+    end,
+  },
 }
