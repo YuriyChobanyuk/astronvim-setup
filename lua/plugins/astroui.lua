@@ -25,7 +25,7 @@ return {
         },
         CursorLineNr = {
           fg = "#cce197",
-          bold = true
+          bold = true,
         },
         Visual = {
           bg = "#3e80b5",
@@ -44,7 +44,7 @@ return {
         },
         Search = {
           fg = "#cce197",
-          underline = true
+          underline = true,
         },
         ["@field"] = {
           fg = "#abb2bf",
@@ -53,11 +53,14 @@ return {
           fg = "#abb2bf",
         },
         ["@interface"] = {
-          fg = "#56b6c2"
+          fg = "#56b6c2",
         },
         Constant = {
-          fg = "#abb2bf"
-        }
+          fg = "#abb2bf",
+        },
+        ["@punctuation.delimiter"] = {
+          bold = true,
+        },
       },
     },
     -- Icons can be configured throughout the interface

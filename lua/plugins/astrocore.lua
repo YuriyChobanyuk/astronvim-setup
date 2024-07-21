@@ -38,7 +38,7 @@ return {
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
         scrolloff = 5,
-        guifont = "Pragmasevka Nerd Font:h13",
+        guifont = "Pragmasevka Nerd Font:h15",
         fileformats = "dos,unix,mac",
       },
       g = { -- vim.g.<key>

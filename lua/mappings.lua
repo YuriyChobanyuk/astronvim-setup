@@ -23,7 +23,8 @@ local commonMappings = {
   ["gb"] = { "<C-O>", desc = "Go back" },
   ["gf"] = { "<C-I>", desc = "Go forward" },
   ["q"] = { "" },
-  K = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
+  ["K"] = { function() vim.lsp.buf.hover() end, desc = "Hover diagnostics" },
+  ["L"] = { function() vim.lsp.buf.signature_help() end, desc = "Signature help"},
 }
 
 local telescopeMappings = {
@@ -116,7 +117,7 @@ local mappings = {
   n = {},
   v = {},
   t = {
-    ["<C-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+    ["<C-S-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
   },
   i = {
     ["<C-l>"] = { function() require("cmp").mapping.complete() end },
