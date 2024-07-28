@@ -22,6 +22,8 @@ return {
       local cmp = require "cmp"
 
       opts.mapping["<C-l>"] = cmp.mapping.complete { reason = "manual" }
+      -- required for neovide
+      opts.mapping["<D-l>"] = cmp.mapping.complete { reason = "manual" }
     end,
     config = function(plugin, opts)
       require "astronvim.plugins.configs.cmp"(plugin, opts)
@@ -56,8 +58,20 @@ return {
     "David-Kunz/jester",
     config = function()
       require("jester").setup {
-        cmd = "jest -t \"$result\""
+        cmd = 'jest -t "$result"',
       }
     end,
+  },
+  {
+    {
+      "LukasPietzschmann/telescope-tabs",
+      dependencies = { "nvim-telescope/telescope.nvim" },
+      config = function()
+        require("telescope").load_extension "telescope-tabs"
+        require("telescope-tabs").setup {
+          -- Your custom config :^)
+        }
+      end,
+    },
   },
 }
