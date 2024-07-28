@@ -24,7 +24,7 @@ local commonMappings = {
   ["gf"] = { "<C-I>", desc = "Go forward" },
   ["q"] = { "" },
   ["K"] = { function() vim.lsp.buf.hover() end, desc = "Hover diagnostics" },
-  ["L"] = { function() vim.lsp.buf.signature_help() end, desc = "Signature help"},
+  ["L"] = { function() vim.lsp.buf.signature_help() end, desc = "Signature help" },
 }
 
 local telescopeMappings = {
@@ -38,6 +38,7 @@ local telescopeMappings = {
   },
   ["<Leader>fv"] = { function() require("telescope.builtin").treesitter() end, desc = "Find variables" },
   ["<Leader>fH"] = { function() require("telescope.builtin").highlights() end, desc = "Find highlights" },
+  ["<Leader>fO"] = { function() require("telescope-tabs").list_tabs() end, desc = "Find tabs" },
 }
 
 local neotreeMappings = {
@@ -66,7 +67,7 @@ local gitsignsMappings = {
 
 local tabMappings = {
   ["<C-`>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-  ["<Leader>tc"] = { function() vim.cmd.tabclose() end, desc = "Close tab" },
+  ["<Leader>tx"] = { function() vim.cmd.tabclose() end, desc = "Close tab" },
   ["<Leader>tn"] = { function() vim.cmd.tabnew() end, desc = "New tab" },
   ["<Leader>tt"] = {
     function()
@@ -117,10 +118,13 @@ local mappings = {
   n = {},
   v = {},
   t = {
+    ["<D-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
     ["<C-S-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+    ["<C-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
   },
   i = {
     ["<C-l>"] = { function() require("cmp").mapping.complete() end },
+    ["<D-l>"] = { function() require("cmp").mapping.complete() end },
   },
 }
 

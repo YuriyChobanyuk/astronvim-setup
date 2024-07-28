@@ -61,6 +61,15 @@ return {
         ["@punctuation.delimiter"] = {
           bold = true,
         },
+        DiffAdd = {
+          fg = "#badba2",
+        },
+        DiffDelete = {
+          fg = "#ff746c",
+        },
+        DiffChange = {
+          fg = "#ffee8c",
+        }
       },
     },
     -- Icons can be configured throughout the interface
