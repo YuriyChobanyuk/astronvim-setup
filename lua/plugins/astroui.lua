@@ -2,6 +2,25 @@
 -- Configuration documentation can be found with `:h astroui`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
+local pastel = {
+  red = "#ff746c",
+  green = "#badba2",
+  yellow = "#ffee8c",
+}
+
+local atom = {
+  white =  "#abb2bf",
+  cyan = "#56b6c2"
+}
+
+local custom = {
+  grey = "#9999bb",
+  accent = "#cce197",
+  hl = "#3e80b5",
+  white = "#f3f3f3",
+  dark = "#353540",
+  black = "#020202"
+}
 
 ---@type LazySpec
 return {
@@ -14,62 +33,75 @@ return {
     highlights = {
       init = { -- this table overrides highlights in all themes
         Normal = {},
+        DiagnosticUnderlineError = {
+          underline = true,
+          sp = pastel.red,
+        },
+        DiagnosticUnderlineWarn = {
+          underline = true,
+          sp = pastel.yellow,
+        },
+        DiagnosticUnderlineHint = {
+          underline = true,
+          sp = pastel.green,
+        },
       },
       astrodark = {
         Comment = {
-          fg = "#9999bb",
+          fg = custom.grey,
           italic = true,
         },
         LineNr = {
-          fg = "#9999bb",
+          fg = custom.grey,
         },
         CursorLineNr = {
-          fg = "#cce197",
+          fg = custom.accent,
           bold = true,
         },
         Visual = {
-          bg = "#3e80b5",
-          fg = "#f3f3f3",
+          bg = custom.hl,
+          fg = custom.white,
         },
         CursorLine = {
-          bg = "#353540",
+          bg = custom.dark,
         },
         CurSearch = {
-          bg = "#cce197",
-          fg = "#020202",
+          bg = custom.accent,
+          fg = custom.black,
         },
         IncSearch = {
-          bg = "#cce197",
-          fg = "#020202",
+          bg = custom.accent,
+          fg = custom.black,
         },
         Search = {
-          fg = "#cce197",
+          fg = custom.accent,
           underline = true,
         },
         ["@field"] = {
-          fg = "#abb2bf",
+          fg = atom.white,
         },
         ["@property"] = {
-          fg = "#abb2bf",
+          fg = atom.white,
         },
         ["@interface"] = {
-          fg = "#56b6c2",
+          fg = atom.cyan,
         },
         Constant = {
-          fg = "#abb2bf",
+          fg = atom.white,
         },
         ["@punctuation.delimiter"] = {
           bold = true,
+          fg = atom.white
         },
         DiffAdd = {
-          fg = "#badba2",
+          fg = pastel.green,
         },
         DiffDelete = {
-          fg = "#ff746c",
+          fg = pastel.red,
         },
         DiffChange = {
-          fg = "#ffee8c",
-        }
+          fg = pastel.yellow,
+        },
       },
     },
     -- Icons can be configured throughout the interface
