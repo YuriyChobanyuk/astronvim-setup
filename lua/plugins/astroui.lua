@@ -9,8 +9,8 @@ local pastel = {
 }
 
 local atom = {
-  white =  "#abb2bf",
-  cyan = "#56b6c2"
+  white = "#abb2bf",
+  cyan = "#56b6c2",
 }
 
 local custom = {
@@ -19,7 +19,7 @@ local custom = {
   hl = "#3e80b5",
   white = "#f3f3f3",
   dark = "#353540",
-  black = "#020202"
+  black = "#020202",
 }
 
 ---@type LazySpec
@@ -91,7 +91,7 @@ return {
         },
         ["@punctuation.delimiter"] = {
           bold = true,
-          fg = atom.white
+          fg = atom.white,
         },
         DiffAdd = {
           fg = pastel.green,
@@ -100,6 +100,15 @@ return {
           fg = pastel.red,
         },
         DiffChange = {
+          fg = pastel.yellow,
+        },
+        GitSignsChangeInline = {
+          fg = pastel.yellow,
+        },
+        GitSignsAddInline = {
+          fg = pastel.green,
+        },
+        GitSignsDeleteInline = {
           fg = pastel.yellow,
         },
       },

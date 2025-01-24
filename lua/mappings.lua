@@ -39,6 +39,15 @@ local telescopeMappings = {
   ["<Leader>fv"] = { function() require("telescope.builtin").treesitter() end, desc = "Find variables" },
   ["<Leader>fH"] = { function() require("telescope.builtin").highlights() end, desc = "Find highlights" },
   ["<Leader>fO"] = { function() require("telescope-tabs").list_tabs() end, desc = "Find tabs" },
+  ["<Leader>fr"] = {
+    function() require("telescope.builtin").lsp_references { search = vim.fn.expand "<cword>" } end,
+    desc = "Find references",
+  },
+  ["<Leader>fR"] = { function() require("telescope.builtin").registers() end, desc = "Find registers" },
+  ["<Leader>fw"] = {
+    function() require("telescope.builtin").grep_string { search = vim.fn.expand "<cword>" } end,
+    desc = "Find words",
+  },
 }
 
 local neotreeMappings = {
@@ -113,9 +122,21 @@ local panelMappings = {
   ["<Leader>xa"] = { "<cmd>AerialClose<cr>", desc = "Close Aerial" },
 }
 
+local visualSpecific = {
+  ["<Leader>fw"] = {
+    function()
+      local text = vim.fn.getreg '"'
+      require("telescope.builtin").grep_string()
+    end,
+    desc = "Search selected text",
+  },
+}
+
 local mappings = {
   -- first key is the mode
-  n = {},
+  n = {
+    ["<Leader>n"] = { "", desc = "Multicursor" },
+  },
   v = {},
   t = {
     ["<D-n>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
@@ -140,5 +161,6 @@ assign(mappings.n, panelMappings)
 
 assign(mappings.v, commonMappings)
 assign(mappings.v, hopMappings)
+assign(mappings.v, visualSpecific)
 
 return mappings

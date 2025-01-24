@@ -13,9 +13,9 @@ return {
         "cssls",
         "html",
         "sqlls",
-        "omnisharp",
-        "tsserver",
-        "lemminx"
+        -- "omnisharp",
+        -- "tsserver",
+        -- "lemminx"
         -- add more arguments for adding more language servers
       })
     end,
@@ -40,9 +40,9 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
-        "python",
-        "chrome",
-        "js"
+        -- "python",
+        -- "chrome",
+        -- "js"
         -- add more arguments for adding more debuggers
       })
     end,
