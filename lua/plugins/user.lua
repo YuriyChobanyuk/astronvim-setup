@@ -41,7 +41,24 @@ return {
   {
     "kylechui/nvim-surround",
     ---@diagnostic disable-next-line: missing-fields
-    config = function() require("nvim-surround").setup {} end,
+    config = function()
+      require("nvim-surround").setup {
+        surrounds = {
+          ["("] = {
+            add = { "(", ")" },
+          },
+          ["["] = {
+            add = { "[", "]" },
+          },
+          ["{"] = {
+            add = { "{", "}" },
+          },
+          ["<"] = {
+            add = { "<", ">" },
+          },
+        },
+      }
+    end,
   },
   {
     "phaazon/hop.nvim",
