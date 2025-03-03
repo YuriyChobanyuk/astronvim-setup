@@ -228,6 +228,14 @@ return {
       require("neo-tree").setup {
         window = {
           position = "right",
+          mappings = {
+            ["l"] = {
+              "open",
+            },
+            ["h"] = {
+              "close_node",
+            },
+          },
         },
       }
     end,
