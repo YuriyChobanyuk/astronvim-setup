@@ -40,6 +40,7 @@ return {
         scrolloff = 5,
         guifont = "Pragmasevka Nerd Font:h15",
         fileformats = "dos,unix,mac",
+        conceallevel = 1
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

@@ -111,6 +111,9 @@ return {
         GitSignsDeleteInline = {
           fg = pastel.yellow,
         },
+        ["@markup.list.unchecked"] = {
+          fg = atom.white,
+        },
       },
     },
     -- Icons can be configured throughout the interface
