@@ -28,7 +28,7 @@ local commonMappings = {
 }
 
 local telescopeMappings = {
-  ["<Leader>fW"] = {
+  ["<Leader>fw"] = {
     function()
       require("telescope.builtin").live_grep {
         additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore", "-w" }) end,
@@ -44,7 +44,7 @@ local telescopeMappings = {
     desc = "Find references",
   },
   ["<Leader>fR"] = { function() require("telescope.builtin").registers() end, desc = "Find registers" },
-  ["<Leader>fw"] = {
+  ["<Leader>fW"] = {
     function() require("telescope.builtin").grep_string { search = vim.fn.expand "<cword>" } end,
     desc = "Find words",
   },
